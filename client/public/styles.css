@@ -1,0 +1,43 @@
+* {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* ==================================================================== */
+
+
+
+.c1 {
+  background: linear-gradient(90deg,
+    rgba(238, 109, 152, 1) 15%,
+    rgba(138, 94, 191, 1) 85%);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c2 {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container1 {
+  display: flex;
+  justify-content: space-around;
+}
+
+#company-logo {
+  position: absolute;
+  height: 80px;
+  top: 270px;
+}
+
+#top-head {
+  height: 200px;
+  position: relative;
+
+}
