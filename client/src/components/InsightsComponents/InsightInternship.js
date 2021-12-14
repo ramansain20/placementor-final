@@ -14,7 +14,9 @@ export default function InsightInternship() {
       <Link to="/insight/placement">/placement</Link>
       <Link to="/insight/internship">/internship</Link>
       <SearchBar />
-      <CompanySection />
+      <CompanySection 
+         url="internship"
+      />
     </>
   );
 }

@@ -8,8 +8,9 @@ router.get("/placement/all_companies", (req, res) => {
     if (err) {
       console.log(err);
     } else {
+      res.header('Access-Control-Allow-Origin','*');
       res.json(newCompany);
-      // console.log(newCompany);
+      console.log(newCompany);
     }
   });
 });

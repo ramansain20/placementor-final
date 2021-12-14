@@ -1,5 +1,10 @@
 import styled from "styled-components";
 import { Card } from "../HomeComponents/PastRecruiter";
+import axios from 'axios';
+import { useEffect, useState } from "react";
+
+import PlacementApi from '../../utils/placement';
+import MyLoader from "./MyLoader";
 const Container = styled.div`
   color: rgba(138, 94, 191, 1);
   display: flex;
@@ -13,29 +18,36 @@ const Container = styled.div`
     justify-content: center;
   }
 `;
-export default function CompanySection() {
+export default function CompanySection(props ) {
+
+//
+  let [company, getCompany]= useState([]);
+  useEffect(()=>{
+    axios.get(`http://localhost:3000/${props.url}/all_companies`).then(response=>{
+      console.log(response.data); 
+      getCompany(response.data);
+    
+    })
+  },[]);
+
+
+
   return (
+
     <Container>
       <h1> Recruiters</h1>
       <div className="card_container">
-        <Card>
-          <h3>GOOGLE</h3>
-        </Card>
-        <Card>
-          <h3>FACEBOOK</h3>
-        </Card>
-        <Card>
-          <h3>MICROSOFT</h3>
-        </Card>
-        <Card>
-          <h3>ADOBE</h3>
-        </Card>
-        <Card>
-          <h3>AMAZON</h3>
-        </Card>
-        <Card>
-          <h3>BOOMBERG</h3>
-        </Card>
+         
+        {!company?<MyLoader />: (company.map((comp,idx)=> 
+      <Card key={idx}>
+
+          <p  >{comp.name}</p>
+          <p  >{comp.selected_students}</p>
+          <p  >{comp.description}</p>
+
+ </Card>
+        ))}
+ 
       </div>
     </Container>
   );

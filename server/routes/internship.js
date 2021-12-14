@@ -8,6 +8,7 @@ router.get("/internship/all_companies", async (req, res) => {
     if (err) {
       console.log(err);
     } else {
+      res.header('Access-Control-Allow-Origin','*');
       res.json(newCompany);
       // console.log(newCompany);
     }

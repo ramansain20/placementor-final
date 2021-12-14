@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require("express");
+const cors = require("cors");
 const bodyparser = require("body-parser");
 const placement = require("./routes/placement");
 const internship = require("./routes/internship");
@@ -19,6 +20,7 @@ app.use(internship);
 app.use(placement);
 app.use(authrouter);
 app.use(cookieParser);
+app.use(cors);
 //cookies
 app.get('/set-cookies',(req,res)=>{
   // res.setHeader('set-cookie','newAdmin=true');

@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+
 import CompanySection from "./CompanySection";
 import HeadingSection from "./HeadingSection";
 import SearchBar from "./SearchBar";
@@ -11,6 +12,11 @@ export default function InsightPlacement() {
 
   //if url is pointing to placemet then show placement one and
   //if it is pointing to internship one show intership one
+
+
+
+
+
   return (
     <>
       <HeadingSection />
