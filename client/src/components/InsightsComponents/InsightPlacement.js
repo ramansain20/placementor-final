@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import CompanySection from "./CompanySection";
+import CompanyFetch from "./CompanyFetch";
 import HeadingSection from "./HeadingSection";
 import SearchBar from "./SearchBar";
 export default function InsightPlacement() {
@@ -15,9 +15,7 @@ export default function InsightPlacement() {
       <Link to="/insight/internship">/internship</Link>
       <SearchBar />
 
-      <CompanySection 
-      url="placement"
-      />
+      <CompanyFetch url="placement" />
     </>
   );
 }

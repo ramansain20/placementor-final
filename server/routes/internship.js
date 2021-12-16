@@ -3,12 +3,12 @@ const { requireAuth } = require("../middleware/auth");
 const Company = require("../model/company");
 
 // to show all the company
-router.get("/internship/all_companies", async (req, res) => {
-  await Company.find({}, (err, newCompany) => {
+router.get("/internship/all_companies", (req, res) => {
+  Company.find({}, (err, newCompany) => {
     if (err) {
       console.log(err);
     } else {
-      res.header('Access-Control-Allow-Origin','*');
+      res.header("Access-Control-Allow-Origin", "*");
       res.json(newCompany);
       // console.log(newCompany);
     }
@@ -66,7 +66,7 @@ router.put("/internship/update/:id", requireAuth, async (req, res) => {
 });
 
 // to delete a company for internship
-router.delete("/internship/delete/:id", requireAuth, async (req, res) => {
+router.delete("/internship/delete/:id", async (req, res) => {
   await Company.findByIdAndRemove(req.params.id)
     .then((company) => {
       if (!company) {

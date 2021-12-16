@@ -24,6 +24,7 @@ export const NavLink = styled(Link)`
   transition: all 0.1s;
   &:hover {
     transform: scale(1.05);
+    color: #fff;
   }
 `;
 export const Bars = styled(FaBars)`
