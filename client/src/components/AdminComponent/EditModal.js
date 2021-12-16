@@ -152,7 +152,7 @@ export default function EditModal(props) {
               />
               {/* ------------------Description--------------------  */}
 
-              {/* ------------------Description--------------------  */}
+              {/* ------------------Year--------------------  */}
               <Form.Label>Year</Form.Label>
               <Form.Control
                 onChange={handleYear}
@@ -160,7 +160,7 @@ export default function EditModal(props) {
                 value={year}
                 type="text"
               />
-              {/* ------------------Description--------------------  */}
+              {/* ------------------Year--------------------  */}
             </Form.Group>
           </Form>
           {/* ======================form body=======================  */}
