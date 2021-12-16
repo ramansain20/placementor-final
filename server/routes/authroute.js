@@ -46,10 +46,14 @@ router.get('/register',(req,res)=>{
 router.post('/register',async (req,res)=>{ 
     const {email,password}=req.body;
     try {
+        res.header('Access-Control-Allow-Origin','*');  
    const user= await  Admin.create({email,password});
    const token = createToken(user._id);
    res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000});
-        res.status(201).json({user:user._id,token});
+     
+   res.status(201).json({user:user._id,token});
+ 
+   
     } catch (err){
     const errors= handleErrors(err);
         res.status(400).send(errors);

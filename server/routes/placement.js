@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { requireAuth } = require("../middleware/auth");
 const placementCompany = require("../model/placementCompany");
-
+const {upload} = require("../config/multer"); 
 // to show all the company
 router.get("/placement/all_companies", (req, res) => {
   placementCompany.find({}, (err, newCompany) => {
@@ -10,7 +10,7 @@ router.get("/placement/all_companies", (req, res) => {
     } else {
       res.header('Access-Control-Allow-Origin','*');
       res.json(newCompany);
-      console.log(newCompany);
+      // console.log(newCompany);
     }
   });
 });
@@ -27,7 +27,8 @@ router.get("/placement/:_id", (req, res) => {
 });
 
 // to post new company by admin
-router.post("/placement/add_company", requireAuth, async (req, res) => {
+// upload.single("Placement"),
+router.post("/placement/add_company",  async (req, res) => {
   const { name, selected_students, description, year } = req.body;
   const newCompany = new placementCompany({
     name: name,

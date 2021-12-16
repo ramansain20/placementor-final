@@ -6,11 +6,13 @@ const placement = require("./routes/placement");
 const internship = require("./routes/internship");
 const authrouter = require("./routes/authroute");
 const app = express();
+const multer = require("multer");
+const path = require("path");
 const connectDB = require("./config/db");
 const cookieParser= require("cookie-parser");
 connectDB();
 app.use(express.static('public'));
-
+app.use(cors());
 
 // Body-parser middleware
 app.use(bodyparser.urlencoded({extended:false}))
@@ -20,7 +22,12 @@ app.use(internship);
 app.use(placement);
 app.use(authrouter);
 app.use(cookieParser);
-app.use(cors);
+
+//static folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+
 //cookies
 app.get('/set-cookies',(req,res)=>{
   // res.setHeader('set-cookie','newAdmin=true');
