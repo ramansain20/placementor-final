@@ -6,12 +6,14 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import AddCompanyModal from "../components/AdminComponent/AddCompanyModal";
+import EditModal from "../components/AdminComponent/EditModal";
 export default function Admin() {
   const [modalShow, setModalShow] = useState(false);
+  const [editModalShow, setEditModalShow] = useState(false);
   const [data, setData] = useState([]);
   const [type, setType] = useState("placement");
   const deleteHandle = async (e) => {
-    await fetch(`http://localhost:3000/placement/delete/${e.target._id}`, {
+    await fetch(`http://localhost:3000/placement/delete/${e.target.id}`, {
       method: "DELETE",
     });
   };
@@ -23,10 +25,9 @@ export default function Admin() {
     axios
       .get(`http://localhost:3000/${type}/all_companies`)
       .then((response) => {
-        console.log(response.data);
         setData(response.data);
       });
-  }, [type]);
+  }, [type, data]);
 
   return (
     <Container sm={12} md={6}>
@@ -59,12 +60,21 @@ export default function Admin() {
               <Card.Text>{company.description}</Card.Text>
               <Button
                 variant="outline-danger mx-2 "
-                _id={company.id}
+                id={company._id}
                 onClick={deleteHandle}
               >
                 Delete
               </Button>
-              <Button variant="outline-warning mx-2 " _id={company.id}>
+              <EditModal
+                data={company}
+                show={editModalShow}
+                onHide={() => setEditModalShow(false)}
+              />
+              <Button
+                variant="outline-warning mx-2 "
+                id={company._id}
+                onClick={() => setEditModalShow(true)}
+              >
                 Edit
               </Button>
             </Card.Body>

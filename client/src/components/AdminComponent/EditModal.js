@@ -3,12 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 export default function EditModal(props) {
-  const [name, setName] = useState("");
-  const [selected_students, setSelected_students] = useState("");
-  const [description, setDescription] = useState("");
-  const [year, setYear] = useState("");
+  const [name, setName] = useState(props.data.name);
+  const [selected_students, setSelected_students] = useState(
+    props.data.selected_students
+  );
+  const [description, setDescription] = useState(props.data.description);
+  const [year, setYear] = useState(props.data.year);
   const [error, setError] = useState(false);
-  const [type, setType] = useState("");
+  const [type, setType] = useState(props.data.type);
+  const [submitted, setSubmitted] = useState(false);
 
   //handle type change
   const handleType = (e) => {
@@ -47,16 +50,28 @@ export default function EditModal(props) {
     } else {
       const item = { name, selected_students, description, year };
 
-      const result = await fetch(`http://localhost:3000/${type}/add_company`, {
-        method: "POST",
-        body: JSON.stringify(item),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
+      const result = await fetch(
+        `http://localhost:3000/${type}/update/${props.data._id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(item),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
       console.log(result);
-
+      setName("");
+      setSelected_students("");
+      setDescription("");
+      setYear("");
+      setType("");
+      setSubmitted(true);
+      setError(false);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 3000);
       setError(false);
     }
   };
@@ -70,6 +85,14 @@ export default function EditModal(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
+        {submitted && (
+          <Form.Text
+            style={{ color: "green" }}
+            className="m-2  align-text-center"
+          >
+            <h3>SuccessFull Submitted</h3>
+          </Form.Text>
+        )}
         <Form.Text className="text-muted">{error}</Form.Text>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -107,8 +130,8 @@ export default function EditModal(props) {
               />
               {/* ------------------Name--------------------  */}
 
-              {/* ------------------Slected Students--------------------  */}
-              <Form.Label>Slected Students</Form.Label>
+              {/* ------------------Selected Students--------------------  */}
+              <Form.Label>Selected Students</Form.Label>
               <Form.Control
                 min="1"
                 type="number"
@@ -117,7 +140,7 @@ export default function EditModal(props) {
                 value={selected_students}
               />
 
-              {/* ------------------Slected Students--------------------  */}
+              {/* ------------------Selected Students--------------------  */}
 
               {/* ------------------Description--------------------  */}
               <Form.Label>Description</Form.Label>

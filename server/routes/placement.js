@@ -1,14 +1,14 @@
 const router = require("express").Router();
 const { requireAuth } = require("../middleware/auth");
 const placementCompany = require("../model/placementCompany");
-const {upload} = require("../config/multer"); 
+const { upload } = require("../config/multer");
 // to show all the company
 router.get("/placement/all_companies", (req, res) => {
   placementCompany.find({}, (err, newCompany) => {
     if (err) {
       console.log(err);
     } else {
-      res.header('Access-Control-Allow-Origin','*');
+      res.header("Access-Control-Allow-Origin", "*");
       res.json(newCompany);
       // console.log(newCompany);
     }
@@ -28,7 +28,7 @@ router.get("/placement/:_id", (req, res) => {
 
 // to post new company by admin
 // upload.single("Placement"),
-router.post("/placement/add_company",  async (req, res) => {
+router.post("/placement/add_company", async (req, res) => {
   const { name, selected_students, description, year } = req.body;
   const newCompany = new placementCompany({
     name: name,
@@ -41,7 +41,7 @@ router.post("/placement/add_company",  async (req, res) => {
 });
 
 //update a details of a company
-router.put("/placement/update/:id", requireAuth, (req, res) => {
+router.put("/placement/update/:id", (req, res) => {
   placementCompany
     .findByIdAndUpdate(
       req.params.id,
@@ -68,7 +68,7 @@ router.put("/placement/update/:id", requireAuth, (req, res) => {
 });
 
 // to delete a company for internship
-router.delete("/placement/delete/:id", requireAuth, (req, res) => {
+router.delete("/placement/delete/:id", (req, res) => {
   placementCompany
     .findByIdAndRemove(req.params.id)
     .then((company) => {
