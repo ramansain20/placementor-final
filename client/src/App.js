@@ -11,6 +11,7 @@ import AdminRegister from "./pages/AdminRegister";
 import AdminLogin from "./pages/AdminLogin";
 
 import Admin from "./pages/Admin";
+import Data from "./components/Data";
 export default function App() {
   return (
     <div className="App">
@@ -18,6 +19,8 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path="/admin" element={<Admin />} />
+          <Route path="/data" element={<Data />} />
+          <Route path="/:type/:id" element={<Data />} />
 
           <Route path="/admin_register" exact element={<AdminRegister />} />
 
