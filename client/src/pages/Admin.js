@@ -13,8 +13,14 @@ export default function Admin() {
   const [data, setData] = useState([]);
   const [type, setType] = useState("placement");
   const deleteHandle = async (e) => {
-    await fetch(`http://localhost:3000/placement/delete/${e.target.id}`, {
+    await fetch(`http://localhost:3000/${type}/delete/${e.target.id}`, {
       method: "DELETE",
+    });
+
+    setData((prev) => {
+      return prev.filter((ele) => {
+        return ele.id !== e.target.id;
+      });
     });
   };
   const typeHandle = (e) => {
@@ -27,7 +33,7 @@ export default function Admin() {
       .then((response) => {
         setData(response.data);
       });
-  }, [type, data]);
+  }, [type]);
 
   return (
     <Container sm={12} md={6}>

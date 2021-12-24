@@ -29,7 +29,7 @@ export default function NaveBar() {
 
         <Bars onClick={hamburgerHandler} />
         <NavMenu>
-          <NavLink to="/insight">Insights</NavLink>
+          <NavLink to="/insight/placement">Insights</NavLink>
           <NavLink to="/past-recuiters">Past Recutiers</NavLink>
           <NavLink to="/stats">Statistics</NavLink>
         </NavMenu>
