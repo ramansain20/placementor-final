@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import React, {useState,useEffect} from "react";
 import InsightSvg from "../../assets/Suitboi2.svg";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Heading = styled.h1`
   font-size: 3rem;
   color: #8a5ebf;
@@ -88,10 +92,20 @@ const Svg = styled.img`
 `;
 
 export default function Insight() {
+
+  useEffect(()=>{
+    AOS.init({
+      duration:2000,
+  
+    });
+  },[]);
+  
+
+
   return (
     <>
       <Heading>Insights</Heading>
-      <Paragraph>
+      <Paragraph  data-aos="fade-down">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam
       </Paragraph>

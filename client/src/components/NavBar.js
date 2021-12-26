@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Nav, NavLink, NavMenu, Bars, HeadingStyle } from "./NavElements";
 import { ResponsiveNav } from "./ResponsiveNav";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 export default function NaveBar() {
   const [responsiveNavState, setResponsiveNavState] = useState(false);
 
@@ -18,9 +20,20 @@ export default function NaveBar() {
       return !prev;
     });
   };
+
+  useEffect(()=>{
+    AOS.init({
+      duration:500,
+  
+    });
+  },[]);
+  
+
+
+
   return (
     <>
-      <Nav>
+      <Nav >
         <NavLink to="/">
           <h1 style={{ fontSize: "35px" }}>
             Place<HeadingStyle>mentor</HeadingStyle>
@@ -28,7 +41,7 @@ export default function NaveBar() {
         </NavLink>
 
         <Bars onClick={hamburgerHandler} />
-        <NavMenu>
+        <NavMenu  data-aos="fade-down-up">
           <NavLink to="/insight/placement">Insights</NavLink>
           <NavLink to="/past-recuiters">Past Recutiers</NavLink>
           <NavLink to="/stats">Statistics</NavLink>

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import ContactForm from "../ContactComponent/Contact";
+
 const Container = styled.div`
   color: rgba(138, 94, 191, 1);
   text-align: center;
@@ -53,10 +55,8 @@ export default function Contact() {
         </p>
       </Container>
 
-      <Cards>
-        <div className="container1"></div>
-        <div className="container2"></div>
-      </Cards>
+    
+        <ContactForm/>
     </>
   );
 }

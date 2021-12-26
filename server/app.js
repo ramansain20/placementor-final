@@ -6,7 +6,7 @@ const placement = require("./routes/placement");
 const internship = require("./routes/internship");
 const authrouter = require("./routes/authroute");
 const app = express();
-const multer = require("multer");
+
 const path = require("path");
 const connectDB = require("./config/db");
 const cookieParser = require("cookie-parser");

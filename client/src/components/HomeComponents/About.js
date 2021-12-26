@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import React, {useState,useEffect} from "react";
 import AboutSvg from "../../assets/Suitboi1.svg";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const AboutSection = styled.div`
   background: linear-gradient(
@@ -38,16 +42,26 @@ const Image = styled.img`
 `;
 
 export default function About() {
+
+useEffect(()=>{
+  AOS.init({
+    duration:2000,
+
+  });
+},[]);
+
+
+
   return (
     <>
       <AboutSection>
         <Heading>About Us</Heading>
-        <Paragraph>
+        <Paragraph   data-aos="fade-up">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam
         </Paragraph>
-        <Image src={AboutSvg} alt="about-svg"></Image>
+        <Image data-aos="fade-left" src={AboutSvg}  alt="about-svg"></Image>
       </AboutSection>
     </>
   );
