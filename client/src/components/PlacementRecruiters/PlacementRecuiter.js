@@ -2,10 +2,12 @@ import "./PlacementRecuiter.css";
 import Button from "react-bootstrap/Button";
 import { Card } from "../HomeComponents/PastRecruiter";
 import { Container, Row, Col, Stack } from "react-bootstrap";
+import CommentComponent from "../CommentComponent/Comment"
 // import logo from "./logo.jpg";
 import headimg from "../../assets/Suitboi1.svg";
 function App() {
   return (
+    <>
     <Stack gap={3}>
       <div
         className="bg-light border c1 justify-content-md-center"
@@ -50,6 +52,10 @@ function App() {
         <Card>sdaffadsfdsafasfsafadsfsdfsd dsfsafasfs</Card>
       </div>
     </Stack>
+
+
+ <CommentComponent/>
+    </>
   );
 }
 

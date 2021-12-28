@@ -13,6 +13,9 @@ const AboutSection = styled.div`
   );
   color: #fff;
   width: 100%;
+  box-sizing:border-box;
+  overflow-x:hidden;
+
   min-height: 50vh;
   padding: 0.5rem;
   @media screen and (max-width: 600px) {
@@ -55,13 +58,16 @@ useEffect(()=>{
   return (
     <>
       <AboutSection>
+    
+
+
         <Heading>About Us</Heading>
         <Paragraph   data-aos="fade-up">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam
         </Paragraph>
-        <Image data-aos="fade-left" src={AboutSvg}  alt="about-svg"></Image>
+        <Image  data-aos="fade-left"  src={AboutSvg}  alt="about-svg"></Image>
       </AboutSection>
     </>
   );

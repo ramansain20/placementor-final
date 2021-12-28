@@ -42,7 +42,7 @@ export default function CompanyFetch(props) {
               <p>{comp.selected_students}</p>
               <p>{comp.description}</p>
               {comp.step_1  &&<p>{comp.step_1}  </p>}
-              {comp.logo && <img src="https://www.registrarcorp.com/wp-content/uploads/2021/02/Amazon-logo.png"></img> }
+              {comp.logo && <img style={{    height: "4rem"}} src="https://www.registrarcorp.com/wp-content/uploads/2021/02/Amazon-logo.png"></img> }
               
             </Card>
           ))

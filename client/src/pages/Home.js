@@ -6,6 +6,8 @@ import PastRecruiter from "../components/HomeComponents/PastRecruiter";
 import HomeStatSection from "../components/HomeComponents/HomeStatSection";
 import Contact from "../components/HomeComponents/Contact";
 import Footer from "../components/HomeComponents/Footer";
+
+import {Helmet} from "react-helmet";
 const Card = styled.div`
   display: flex;
   justify-content: space-around;
@@ -33,6 +35,15 @@ const Stat = styled.div`
 export default function Home() {
   return (
     <>
+    <Helmet>
+    <meta charSet="utf-8" />
+    <title>Home | Placementor</title>
+    {/* <link rel="icon" type="image/png" sizes="16x16" href="/"> */}
+    <link rel="icon" type="image/png" href="../assets/favicon_io/favicon-16x16.png" />
+    <meta name="theme-color" content="#064420"/>
+    </Helmet>
+    
+
       <About />
       <Insight />
       <HomeStat>
@@ -53,6 +64,7 @@ export default function Home() {
       </HomeStat>
       <PastRecruiter />
       <HomeStatSection />
+    
     </>
   );
 }

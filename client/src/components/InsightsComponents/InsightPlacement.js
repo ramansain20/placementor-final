@@ -3,7 +3,7 @@ import CompanyFetch from "./CompanyFetch";
 import HeadingSection from "./HeadingSection";
 import SearchBar from "./SearchBar";
 import styled from "styled-components";
-
+import {Helmet}  from "react-helmet";
 export default function InsightPlacement() {
   const BodyLink = styled(Link)`
     background-color: ${(props) => props.activeColor || "white"};
@@ -30,6 +30,13 @@ export default function InsightPlacement() {
   `;
   return (
     <>
+        <Helmet>
+    <meta charSet="utf-8" />
+    <title>Placement Insight </title>
+    </Helmet>
+    
+
+
       <HeadingSection />
       <Div>
         <BodyLink activeColor="rgba(238, 109, 152, 1)" to="/insight/placement">

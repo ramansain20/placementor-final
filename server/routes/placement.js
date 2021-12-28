@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { requireAuth } = require("../middleware/auth");
 const placementCompany = require("../model/placementCompany");
-const { upload } = require("../config/multer");
 const XLSX = require("xlsx");
 const detailsSheet = XLSX.readFile('Book1.xlsx');
 // const detailsSheet = XLSX.readFile('https://1drv.ms/x/s!AijzmVsqlu-jglgYmkn6phP_EK0u?e=IZEzyR');

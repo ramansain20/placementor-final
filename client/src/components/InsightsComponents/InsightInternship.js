@@ -4,7 +4,7 @@ import CompanyFetch from "./CompanyFetch";
 import HeadingSection from "./HeadingSection";
 import SearchBar from "./SearchBar";
 import styled from "styled-components";
-
+import {Helmet} from "react-helmet";
 const BodyLink = styled(Link)`
   background-color: ${(props) => props.activeColor || "white"};
   border-radius: 10px;
@@ -33,6 +33,13 @@ export default function InsightInternship() {
   console.log(params);
   return (
     <>
+
+    <Helmet>
+    <meta charSet="utf-8" />
+    <title>Internship Insight </title>
+    </Helmet>
+    
+
       <HeadingSection />
       <Div>
         <BodyLink to="/insight/placement">Placement</BodyLink>

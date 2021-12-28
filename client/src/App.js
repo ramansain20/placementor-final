@@ -9,12 +9,12 @@ import Footer from "./components/HomeComponents/Footer";
 import Contact from "./components/HomeComponents/Contact";
 import AdminRegister from "./pages/AdminRegister";
 import AdminLogin from "./pages/AdminLogin";
-
+import Comment from "./components/CommentComponent/Comment";
 import Admin from "./pages/Admin";
 import Data from "./components/Data";
 export default function App() {
   return (
-    <div className="App">
+    <div className="App" >
       <Router>
         <Navbar />
         <Routes>
@@ -42,7 +42,7 @@ export default function App() {
           />
 
           <Route path="/stats" exact element={<Stats />}></Route>
-
+        <Route path="/placement_process" exact element={<Comment/>}></Route>
           <Route path="*" exact element={<>Not found</>}></Route>
         </Routes>
         <Contact />
