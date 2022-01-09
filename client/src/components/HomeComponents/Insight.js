@@ -102,7 +102,7 @@ export default function Insight() {
   return (
     <>
       <Heading>Insights</Heading>
-      <Paragraph data-aos="fade-down">
+      <Paragraph>
         Get valuable insights into your dream companies which will be handy in
         paving your way right into them.
       </Paragraph>

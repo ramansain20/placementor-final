@@ -15,7 +15,7 @@ function ContactForm() {
   return (
     <div className={styles.contact_section}>
       <div className={styles.card_section}>
-        <div className={styles.first_card} data-aos="fade-right">
+        <div className={styles.first_card}>
           <div className={styles.row_items}>
             <div className={styles.icons}>
               <FontAwesomeIcon icon={faPhone} size={"lg"} />
@@ -46,7 +46,7 @@ function ContactForm() {
             </div>
           </div>
         </div>
-        <div className={styles.second_card} data-aos="fade-left">
+        <div className={styles.second_card}>
           <div className={styles.contact_form}>
             <div className={styles.name}>
               <input

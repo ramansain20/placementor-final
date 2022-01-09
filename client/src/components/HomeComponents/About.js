@@ -54,7 +54,7 @@ export default function About() {
     <>
       <AboutSection>
         <Heading>About Us</Heading>
-        <Paragraph data-aos="fade-up">
+        <Paragraph>
           Mailer Daemon is the best recognised student-run media body of IIT
           (ISM) Dhanbad. Our pages have produced exhaustive reports and
           statistics every day for the last two decades, helping the student
@@ -62,12 +62,12 @@ export default function About() {
           updated with news and ideas centred around the college.
         </Paragraph>
         <br />
-        <Paragraph data-aos="fade-up">
+        <Paragraph>
           'Placementor' is another initiative towards the same: creating a
           compendium of valuable insights, data and statistics to help you
           clinch your dream job.
         </Paragraph>
-        <Image data-aos="fade-left" src={AboutSvg} alt="about-svg"></Image>
+        <Image src={AboutSvg} alt="about-svg"></Image>
       </AboutSection>
     </>
   );
