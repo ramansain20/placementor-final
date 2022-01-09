@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import AboutSvg from "../../assets/Suitboi1.svg";
 import AOS from "aos";
 import "aos/dist/aos.css";

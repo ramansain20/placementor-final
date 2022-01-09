@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import InsightSvg from "../../assets/Suitboi2.svg";
 import AOS from "aos";
 import "aos/dist/aos.css";
