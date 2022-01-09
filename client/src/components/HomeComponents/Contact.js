@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ContactForm from "../ContactComponent/Contact";
+import ContactForm from "../ContactComponent/ContactForm";
 
 const Container = styled.div`
   color: rgba(138, 94, 191, 1);
@@ -55,8 +55,7 @@ export default function Contact() {
         </p>
       </Container>
 
-    
-        {/* <ContactForm/> */}
+      <ContactForm />
     </>
   );
 }

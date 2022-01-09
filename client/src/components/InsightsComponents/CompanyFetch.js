@@ -38,12 +38,15 @@ export default function CompanyFetch(props) {
         ) : (
           company.map((comp, idx) => (
             <Card key={idx}>
-              <p>{comp.name}</p>
+              <h3 style={{ textTransform: "uppercase", textAlign: "center" }}>
+                {comp.company_name}
+              </h3>
               <p>{comp.selected_students}</p>
-              <p>{comp.description}</p>
-              {comp.step_1  &&<p>{comp.step_1}  </p>}
-              {comp.logo && <img style={{    height: "4rem"}} src="https://www.registrarcorp.com/wp-content/uploads/2021/02/Amazon-logo.png"></img> }
-              
+              {/* <p>{comp.eligible_branch}</p> */}
+              <p>{comp.CGPA}</p>
+              {comp.logo && (
+                <img style={{ height: "20%" }} src={`${comp.logo}`} alt="" />
+              )}
             </Card>
           ))
         )}

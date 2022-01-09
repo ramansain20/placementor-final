@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import React, {useState,useEffect} from "react";
+import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import InsightSvg from "../../assets/Suitboi2.svg";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Heading = styled.h1`
   font-size: 3rem;
@@ -92,26 +93,24 @@ const Svg = styled.img`
 `;
 
 export default function Insight() {
-
-  useEffect(()=>{
+  useEffect(() => {
     AOS.init({
-      duration:2000,
-  
+      duration: 2000,
     });
-  },[]);
-  
-
+  }, []);
 
   return (
     <>
       <Heading>Insights</Heading>
-      <Paragraph  data-aos="fade-down">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam
+      <Paragraph data-aos="fade-down">
+        Get valuable insights into your dream companies which will be handy in
+        paving your way right into them.
       </Paragraph>
       <Div>
         <Svg src={InsightSvg} />
-        <PlacementDiv>
+        <PlacementDiv
+          onClick={(event) => (window.location.href = "/insight/placement")}
+        >
           <img
             style={{ fill: "#fff" }}
             src="https://img.icons8.com/ios/64/000000/doughnut-chart--v2.png"
@@ -119,16 +118,18 @@ export default function Insight() {
           />
           <h2>Placement Insights</h2>
           <p style={{ marginTop: "35px" }}>
-            {" "}
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et
+            Students appear for placements in the final year of their study,
+            with the CDC following a One-Student-One-Job policy.
           </p>
         </PlacementDiv>
-        <InternDiv>
+        <InternDiv
+          onClick={(event) => (window.location.href = "/insight/internship")}
+        >
           <h2>Intern Insights</h2>
           <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor
+            Students take up internships to gain first-hand experience of the
+            professional world, generally during the second and third years of
+            their academic programme.
           </p>
         </InternDiv>
       </Div>

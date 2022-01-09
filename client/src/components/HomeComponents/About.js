@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import AboutSvg from "../../assets/Suitboi1.svg";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AboutSection = styled.div`
   background: linear-gradient(
@@ -13,8 +12,8 @@ const AboutSection = styled.div`
   );
   color: #fff;
   width: 100%;
-  box-sizing:border-box;
-  overflow-x:hidden;
+  box-sizing: border-box;
+  overflow-x: hidden;
 
   min-height: 50vh;
   padding: 0.5rem;
@@ -45,29 +44,30 @@ const Image = styled.img`
 `;
 
 export default function About() {
-
-useEffect(()=>{
-  AOS.init({
-    duration:2000,
-
-  });
-},[]);
-
-
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
 
   return (
     <>
       <AboutSection>
-    
-
-
         <Heading>About Us</Heading>
-        <Paragraph   data-aos="fade-up">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam
+        <Paragraph data-aos="fade-up">
+          Mailer Daemon is the best recognised student-run media body of IIT
+          (ISM) Dhanbad. Our pages have produced exhaustive reports and
+          statistics every day for the last two decades, helping the student
+          community express their opinions, identify opportunities and stay
+          updated with news and ideas centred around the college.
         </Paragraph>
-        <Image  data-aos="fade-left"  src={AboutSvg}  alt="about-svg"></Image>
+        <br />
+        <Paragraph data-aos="fade-up">
+          'Placementor' is another initiative towards the same: creating a
+          compendium of valuable insights, data and statistics to help you
+          clinch your dream job.
+        </Paragraph>
+        <Image data-aos="fade-left" src={AboutSvg} alt="about-svg"></Image>
       </AboutSection>
     </>
   );

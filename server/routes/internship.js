@@ -27,7 +27,7 @@ router.get("/internship/:_id", async (req, res) => {
 });
 
 // to post new company by admin
-router.post("/internship/add_company", requireAuth, async (req, res) => {
+router.post("/internship/add_company", async (req, res) => {
   const { name, selected_students, description, year } = req.body;
   const newCompany = new Company({
     name: name,
@@ -40,7 +40,7 @@ router.post("/internship/add_company", requireAuth, async (req, res) => {
 });
 
 //update a details of a company
-router.put("/internship/update/:id", requireAuth, async (req, res) => {
+router.put("/internship/update/:id", async (req, res) => {
   await Company.findByIdAndUpdate(
     req.params.id,
     {

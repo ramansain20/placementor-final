@@ -2,10 +2,9 @@ const router = require("express").Router();
 const { requireAuth } = require("../middleware/auth");
 const placementCompany = require("../model/placementCompany");
 const XLSX = require("xlsx");
-const detailsSheet = XLSX.readFile('Book1.xlsx');
+const detailsSheet = XLSX.readFile("Placement.xlsx");
 // const detailsSheet = XLSX.readFile('https://1drv.ms/x/s!AijzmVsqlu-jglgYmkn6phP_EK0u?e=IZEzyR');
 const sheet_name_list = detailsSheet.SheetNames;
-
 
 // to show all the company
 // router.get("/placement/all_companies", (req, res) => {
@@ -20,12 +19,9 @@ const sheet_name_list = detailsSheet.SheetNames;
 //   });
 // });
 
-
-router.get("/placement/all_companies",(req,res)=>{
+router.get("/placement/all_companies", (req, res) => {
   res.json(XLSX.utils.sheet_to_json(detailsSheet.Sheets[sheet_name_list[0]]));
-})
-
-
+});
 
 router.get("/placement/:_id", (req, res) => {
   placementCompany.findById(req.params._id, (err, company) => {

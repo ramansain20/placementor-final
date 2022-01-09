@@ -73,16 +73,22 @@ export default function HomeStatSection() {
       <Container>
         <h1>Statistics</h1>
         <p className="paragraph">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          Concise and accurate data on every company that has visited the campus
+          for hiring.
         </p>
+
         <SvgContainer>
           <img className="statstableguy" src={StatTableGuy} alt="svg" />
           <img className="statsscreen" src={StatsScreen} alt="svg" />
           <img className="statsgirl" src={Statsgirl} alt="svg" />
         </SvgContainer>
-
-        <Button>View All Stats {"->"}</Button>
+        <br />
+        <p className="paragraph">
+          An in-depth company-wise breakdown for the previous placement seasons.
+        </p>
+        <Button onClick={(event) => (window.location.href = "/stats")}>
+          View All Stats {"->"}
+        </Button>
       </Container>
     </>
   );

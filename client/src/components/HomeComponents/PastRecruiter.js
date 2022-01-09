@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import ToDoList from "../../assets/todolist.svg";
-
+import google from "../../assets/logo/google-color.svg";
+import microsoft from "../../assets/logo/microsoft.svg";
+import amazon from "../../assets/logo/amazon-a-logo.svg";
+import adobe from "../../assets/logo/adobe.svg";
+import sprinklr from "../../assets/logo/sprinklr-logo.svg";
 const Container = styled.div`
   position: relative;
   display: flex;
@@ -43,6 +47,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   border: 2px dashed rgba(138, 94, 191, 1);
   border-radius: 10px;
   transition: all 0.5s;
@@ -71,6 +76,10 @@ const Svg1 = styled.img`
     display: block;
   }
 `;
+
+const logo_style = {
+  height: "30%",
+};
 const Svg2 = styled.img`
   position: absolute;
   left: 100%;
@@ -112,27 +121,40 @@ export default function PastRecruiters() {
         <Svg2 src={ToDoList} />
         <h1 className="heading"> PastRecruiters</h1>
         <p className="paragraph">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          The institute has had active relations with many corporations of high
+          repute for several decades. Some of the prominent recruiters are:
         </p>
         <div className="company_container">
           <Card>
             <h3>GOOGLE</h3>
+            <img style={logo_style} alt="google logo" src={google}></img>
           </Card>
           <Card>
             <h3>MICROSOFT</h3>
+            <img style={logo_style} alt="google logo" src={microsoft}></img>
           </Card>
           <Card>
-            <h3>FACEBOOK</h3>
+            <h3>AMAZON</h3>
+            <img style={logo_style} alt="google logo" src={amazon}></img>
           </Card>
           <Card>
             <h3>ADOBE</h3>
+            <img style={logo_style} alt="google logo" src={adobe}></img>
           </Card>
           <Card>
             <h3>SPRINKLR</h3>
+            <img
+              style={{ height: "40%" }}
+              alt="google logo"
+              src={sprinklr}
+            ></img>
           </Card>
         </div>
-        <Button>View All {"->"}</Button>
+        <Button
+          onClick={(event) => (window.location.href = "/insight/placement")}
+        >
+          View All {"->"}
+        </Button>
       </Container>
     </>
   );

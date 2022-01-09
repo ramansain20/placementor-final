@@ -1,35 +1,21 @@
-import React ,{useEffect} from "react";
+import React, { useEffect } from "react";
 import styles from "./Contact.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEnvelope,
-  faPhone,
-  faWifi
-} from "@fortawesome/free-solid-svg-icons";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { faEnvelope, faPhone, faWifi } from "@fortawesome/free-solid-svg-icons";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function ContactForm() {
-
-  useEffect(()=>{
+  useEffect(() => {
     AOS.init({
-      duration:2000,
-  
+      duration: 2000,
     });
-  },[]);
-  
-  
+  }, []);
 
   return (
     <div className={styles.contact_section}>
-      {/* <h1 className={styles.heading}>Contact Us</h1>
-      <p className={styles.para}>
-        lorem ipsum Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-        erat, sed diam voluptua. At vero
-      </p> */}
       <div className={styles.card_section}>
-        <div className={styles.first_card} data-aos="fade-right"   >
+        <div className={styles.first_card} data-aos="fade-right">
           <div className={styles.row_items}>
             <div className={styles.icons}>
               <FontAwesomeIcon icon={faPhone} size={"lg"} />
@@ -43,12 +29,14 @@ function ContactForm() {
               <FontAwesomeIcon icon={faEnvelope} size={"lg"} />
             </div>
             <div>
-              <p>placementor@gmail. <span>com</span></p>
+              <p>
+                placementor@gmail. <span>com</span>
+              </p>
             </div>
           </div>
           <div className={styles.row_items}>
             <div className={styles.icons}>
-              <FontAwesomeIcon icon={faWifi}  size={"lg"} />
+              <FontAwesomeIcon icon={faWifi} size={"lg"} />
             </div>
             <div>
               <p>
@@ -97,7 +85,6 @@ function ContactForm() {
               ></input>
             </div>
           </div>
-
 
           <div className={styles.submit_btn}>
             <button className={styles.submit}>Send Message</button>
