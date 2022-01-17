@@ -7,9 +7,7 @@ const detailsSheet = XLSX.readFile("internship.xlsx");
 const sheet_name_list = detailsSheet.SheetNames;
 // to show all the company
 router.get("/internship/all_companies", (req, res) => {
-  console.log(
-    XLSX.utils.sheet_to_json(detailsSheet.Sheets[sheet_name_list[0]])
-  );
+  
   res.json(XLSX.utils.sheet_to_json(detailsSheet.Sheets[sheet_name_list[0]]));
 });
 
