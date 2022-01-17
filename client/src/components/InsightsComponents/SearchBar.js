@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 const InputField = styled.input`
   width: 90%;
@@ -29,10 +30,15 @@ const Button = styled.button`
   transform: translateX(-100%);
   cursor: pointer;
 `;
-export default function SearchBar() {
+
+export default function SearchBar({ query, onChange }) {
+  console.log(query);
+  const queryHandler = (e) => {
+    onChange(e.target.value);
+  };
   return (
     <>
-      <InputField placeholder="Search Here"></InputField>
+      <InputField placeholder="Search Here" onChange={queryHandler} />
       <Button>Search</Button>
     </>
   );

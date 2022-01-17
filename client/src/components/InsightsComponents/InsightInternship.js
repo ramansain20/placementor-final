@@ -4,7 +4,8 @@ import CompanyFetch from "./CompanyFetch";
 import HeadingSection from "./HeadingSection";
 import SearchBar from "./SearchBar";
 import styled from "styled-components";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
+import { useState } from "react";
 const BodyLink = styled(Link)`
   background-color: ${(props) => props.activeColor || "white"};
   border-radius: 10px;
@@ -29,16 +30,16 @@ const Div = styled.div`
 `;
 
 export default function InsightInternship() {
+  const [query, setQuery] = useState("");
+
   const params = useParams();
   console.log(params);
   return (
     <>
-
-    <Helmet>
-    <meta charSet="utf-8" />
-    <title>Internship Insight </title>
-    </Helmet>
-    
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Internship Insight </title>
+      </Helmet>
 
       <HeadingSection />
       <Div>
@@ -47,7 +48,7 @@ export default function InsightInternship() {
           Internship
         </BodyLink>
       </Div>
-      <SearchBar />
+      <SearchBar onChange={() => setQuery()} query={query} />
       <CompanyFetch url="internship" />
     </>
   );
