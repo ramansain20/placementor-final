@@ -1,16 +1,53 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./Contact.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone, faWifi } from "@fortawesome/free-solid-svg-icons";
-import AOS from "aos";
+// import AOS from "aos";
 import "aos/dist/aos.css";
 
 function ContactForm() {
-  useEffect(() => {
-    AOS.init({
-      duration: 2000,
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [phnNo, setPhnNo] = useState("");
+  const [error, setError] = useState(false);
+  const [submit, setSubmit] = useState(false);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (!firstName || !lastName || !message || !phnNo || !email) {
+      setError(true);
+      return;
+    }
+    let data = {
+      firstName,
+      lastName,
+      message,
+      email,
+      phnNo,
+    };
+    fetch(`http://localhost:3000/send_mail`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }).then(() => {
+      alert("Message Sent successfully 🤩");
+      setFirstName("");
+      setLastName("");
+      setMessage("");
+      setPhnNo("");
+      setEmail("");
     });
-  }, []);
+  };
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 2000,
+  //   });
+  // }, []);
 
   return (
     <div className={styles.contact_section}>
@@ -53,12 +90,22 @@ function ContactForm() {
                 type="text"
                 className={styles.input_items}
                 name="first_name"
+                value={firstName}
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                  setError(false);
+                }}
                 placeholder="First Name"
               ></input>
               <input
                 type="text"
                 className={styles.input_items}
                 name="last_name"
+                value={lastName}
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                  setError(false);
+                }}
                 placeholder="Last Name"
               ></input>
             </div>
@@ -67,12 +114,22 @@ function ContactForm() {
                 type="text"
                 className={styles.input_items}
                 name="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setError(false);
+                }}
                 placeholder="Email"
               ></input>
               <input
                 type="text"
                 className={styles.input_items}
                 name="phone"
+                value={phnNo}
+                onChange={(e) => {
+                  setPhnNo(e.target.value);
+                  setError(false);
+                }}
                 placeholder="Phone Number"
               ></input>
             </div>
@@ -81,13 +138,20 @@ function ContactForm() {
                 type="text"
                 className={styles.input_items}
                 name="message"
+                value={message}
+                onChange={(e) => {
+                  setMessage(e.target.value);
+                  setError(false);
+                }}
                 placeholder="Message for us"
               ></input>
             </div>
           </div>
 
           <div className={styles.submit_btn}>
-            <button className={styles.submit}>Send Message</button>
+            <button className={styles.submit} onClick={submitHandler}>
+              Send Message
+            </button>
           </div>
         </div>
       </div>

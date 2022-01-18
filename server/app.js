@@ -50,7 +50,8 @@ app.post("/comments", async (req, res) => {
 
 // email send
 
-app.get("/send_mail", async (req, res) => {
+app.post("/send_mail", async (req, res) => {
+  console.log(req.body);
   let transporter = await nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
@@ -63,13 +64,13 @@ app.get("/send_mail", async (req, res) => {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    to: "mejarkumar2003@gmail.com", // list of receivers
+    to: "placementor2021@gmail.com", // list of receivers
     //  from: 'mehulagarwal0001@gmail.com',
     //  from: req.body.email, // sender address
     replyTo: "mejarsamrat2003@gmail.com",
     subject: "Placementor", // Subject line
-    text: req.body.description, // plain text body
-    // html: "<b>Hello world?</b>", // html body
+    html: `<h2>${req.body.message}</h2><br><p>${req.body.firstName}</p><p>${req.body.lastName}</p><br><p>${req.body.phnNo}</p><br><p>${req.body.email}</p>`, // plain text body
+    // html: "<b>Hello world</b>", // html body
   });
   console.log("Message sent: %s", info.messageId);
 });
