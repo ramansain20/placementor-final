@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Card } from "../HomeComponents/PastRecruiter";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import MyLoader from "./MyLoader";
 const Container = styled.div`
@@ -19,6 +20,7 @@ const Container = styled.div`
 `;
 export default function CompanyFetch(props) {
   //
+  const navigate = useNavigate();
   let [company, getCompany] = useState([]);
   useEffect(() => {
     axios
@@ -28,7 +30,7 @@ export default function CompanyFetch(props) {
         getCompany(response.data);
       });
   }, [props.url]);
-
+  console.log(props.query);
   return (
     <Container>
       <h1> Recruiters</h1>
@@ -36,19 +38,36 @@ export default function CompanyFetch(props) {
         {!company ? (
           <MyLoader />
         ) : (
-          company.map((comp, idx) => (
-            <Card key={idx}>
-              <h3 style={{ textTransform: "uppercase", textAlign: "center" }}>
-                {comp.company_name}
-              </h3>
-              <p>{comp.selected_students}</p>
-              {/* <p>{comp.eligible_branch}</p> */}
-              <p>{comp.CGPA}</p>
-              {comp.logo && (
-                <img style={{ height: "20%" }} src={`${comp.logo}`} alt="" />
-              )}
-            </Card>
-          ))
+          company
+            .filter((val) => {
+              console.log(val.company_name);
+              if (!props.query) return val;
+              else if (
+                val.company_name &&
+                val.company_name
+                  .toLowerCase()
+                  .includes(props.query.toLowerCase())
+              )
+                return val;
+            })
+            .map((comp, idx) => (
+              <Card
+                onClick={() => {
+                  navigate(`/${props.type}/${comp.company_name}`);
+                }}
+                key={idx}
+              >
+                <h3 style={{ textTransform: "uppercase", textAlign: "center" }}>
+                  {comp.company_name}
+                </h3>
+                <p>{comp.selected_students}</p>
+                {/* <p>{comp.eligible_branch}</p> */}
+                <p>{comp.CGPA}</p>
+                {comp.logo && (
+                  <img style={{ height: "20%" }} src={`${comp.logo}`} alt="" />
+                )}
+              </Card>
+            ))
         )}
       </div>
     </Container>

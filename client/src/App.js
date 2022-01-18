@@ -14,17 +14,18 @@ import Admin from "./pages/Admin";
 import Data from "./components/Data";
 export default function App() {
   return (
-    <div className="App" >
+    <div className="App">
       <Router>
         <Navbar />
         <Routes>
           <Route path="/admin" element={<Admin />} />
-          <Route path="/data" element={<Data />} />
+
           <Route path="/:type/:id" element={<Data />} />
 
           <Route path="/admin_register" exact element={<AdminRegister />} />
 
           <Route path="/admin_login" exact element={<AdminLogin />} />
+          <Route path="/register" exact element={<AdminRegister />} />
 
           <Route path="/" exact element={<Home />} />
 
@@ -42,7 +43,7 @@ export default function App() {
           />
 
           <Route path="/stats" exact element={<Stats />}></Route>
-        <Route path="/placement_process" exact element={<Comment/>}></Route>
+          <Route path="/placement_process" exact element={<Comment />}></Route>
           <Route path="*" exact element={<>Not found</>}></Route>
         </Routes>
         <Contact />

@@ -20,7 +20,7 @@ const sheet_name_list = detailsSheet.SheetNames;
 //   });
 // });
 
-router.get("/placement/all_companies", requireAuth, (req, res) => {
+router.get("/placement/all_companies", (req, res) => {
   res.json(XLSX.utils.sheet_to_json(detailsSheet.Sheets[sheet_name_list[0]]));
 });
 
@@ -34,10 +34,12 @@ router.get("/placement/:company_name", (req, res) => {
   //   }
   // });
   // console.log(`${req.params.company_name}`);
-  const mejarArray = XLSX.utils.sheet_to_json(detailsSheet.Sheets[sheet_name_list[0]]);
-  const mejarString = JSON.stringify(Object.assign({},mejarArray));
-  const mejarObj = JSON.parse(mejarString);
-  let companyName = mejarArray.find(comp =>comp.company_name  == req.params.company_name);
+  const companyArray = XLSX.utils.sheet_to_json(
+    detailsSheet.Sheets[sheet_name_list[0]]
+  );
+  let companyName = companyArray.find(
+    (comp) => comp.company_name == req.params.company_name
+  );
   res.json(companyName);
 });
 
