@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 var schema = mongoose.Schema;
 
 var PlacementCompanySchema = new schema({
-    name:{
+    company_name:{
         type: String,
         required:true
     },
@@ -32,7 +32,7 @@ var PlacementCompanySchema = new schema({
         step2:{
             type:String
         },
-        step2:{
+        step3:{
             type:String
         }
     },

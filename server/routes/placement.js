@@ -25,8 +25,8 @@ router.get("/placement/all_companies", (req, res) => {
 // });
 
 router.get("/placement/:company_name", (req, res) => {
-  console.log(`${req.params.company_name}`);
-  const company= placementCompany.findOne({name:req.params.company_name}, (err, company) => {
+  // console.log(`${req.params.company_name}`);
+  const company= placementCompany.findOne({company_name:req.params.company_name}, (err, company) => {
     if (err) {
       console.log(err);
     } else {
@@ -50,9 +50,9 @@ router.get("/placement/:company_name", (req, res) => {
 // to post new company by admin
 // upload.single("Placement"),
 router.post("/placement/add_company", async (req, res) => {
-  const { name, selected_students, test_series, step3, technical_round, HR_round, projects, PORs, step1, step2, year, logo, eligible_branch, CGPA, takeaways } = req.body;
+  const { comapany_name, selected_students, test_series, step3, technical_round, HR_round, projects, PORs, step1, step2, year, logo, eligible_branch, CGPA, takeaways } = req.body;
   const newCompany = new placementCompany({
-    name: name,
+   company_name: company_name,
     selected_students: selected_students,
     year: year,
     logo: logo,
