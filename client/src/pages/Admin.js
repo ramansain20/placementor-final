@@ -31,7 +31,7 @@ export default function Admin() {
     axios
       .get(`http://localhost:3000/${type}/all_companies`)
       .then((response) => {
-        setData(response.data);
+        setData([response.data]);
       });
   }, [type]);
 
@@ -41,13 +41,13 @@ export default function Admin() {
         className="m-3"
         style={{ width: "50%" }}
         value={type}
-        onChange={typeHandle}
+        onChange={() => typeHandle}
         aria-label="Default select example"
       >
-        {/* <select value={type} onChange={typeHandle}> */}
+        <select value={type} onChange={() => typeHandle}>
         <option value="placement">Placement</option>
         <option value="internship">Internship</option>
-        {/* </select> */}
+        </select>
       </Form.Select>
 
       <AddCompanyModal show={modalShow} onHide={() => setModalShow(false)} />
@@ -67,7 +67,7 @@ export default function Admin() {
               <Button
                 variant="outline-danger mx-2 "
                 id={company._id}
-                onClick={deleteHandle}
+                onClick={() => deleteHandle}
               >
                 Delete
               </Button>

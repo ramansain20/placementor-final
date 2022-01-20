@@ -12,12 +12,25 @@ const Data = () => {
   console.log(params);
 
   const [data, setData] = useState({});
-  useEffect(() => {
+ 
+  const objectHandler=(obj)=>{
+    console.log("hello");
+    console.log(obj);
+     const values= Object.keys(obj).map((e,i)=>{
+       obj[e] && typeof obj[e]==='object'? objectHandler(obj[e]): setArr((prev)=>{
+        return [...prev,{key:e,value:obj[e]}]
+       }) 
+       
+     });
+     
+   }
+
+   useEffect(() => {
     axios
       .get(`http://localhost:3000/${params.type}/${params.id}`)
       .then((response) => {
         console.log(response.data);
-        setData(response.data);
+        setData({data:response.data});
        
       }).then(()=>{
         objectHandler(data)
@@ -27,19 +40,6 @@ const Data = () => {
       });
   }, [params]);
 
-
- 
-  const objectHandler=(obj)=>{
-    console.log("hello")
-    console.log(obj)
-     const values= Object.keys(obj).map((e,i)=>{
-       obj[e] && typeof obj[e]==='object'? objectHandler(obj[e]): setArr((prev)=>{
-        return [...prev,{key:e,value:obj[e]}]
-       }) 
-       
-     });
-     
-   }
 
 
   if (params.type !== "placement" && params.type !== "internship") {
@@ -67,7 +67,7 @@ const Data = () => {
               </Accordion.Item>
             );
           })} */}
-          { objectHandler(data)}
+          { () => {objectHandler(data)}}
           {console.log(arr)}
           {arr.map((e)=>{
             <> <h1>e.key</h1>
