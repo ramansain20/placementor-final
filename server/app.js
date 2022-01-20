@@ -12,7 +12,7 @@ const app = express();
 const path = require("path");
 const connectDB = require("./config/db");
 const cookieParser = require("cookie-parser");
-// connectDB();
+connectDB();
 app.use(express.static("public"));
 app.use(cors());
 

@@ -8,50 +8,71 @@ const detailsSheet = XLSX.readFile("Placement.xlsx");
 const sheet_name_list = detailsSheet.SheetNames;
 
 // to show all the company
-// router.get("/placement/all_companies", (req, res) => {
-//   placementCompany.find({}, (err, newCompany) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.header("Access-Control-Allow-Origin", "*");
-//       res.json(newCompany);
-//       // console.log(newCompany);
-//     }
-//   });
-// });
-
 router.get("/placement/all_companies", (req, res) => {
-  res.json(XLSX.utils.sheet_to_json(detailsSheet.Sheets[sheet_name_list[0]]));
+  placementCompany.find({}, (err, newCompany) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.json(newCompany);
+      // console.log(newCompany);
+    }
+  });
 });
 
+// router.get("/placement/all_companies", (req, res) => {
+//   res.json(XLSX.utils.sheet_to_json(detailsSheet.Sheets[sheet_name_list[0]]));
+// });
+
 router.get("/placement/:company_name", (req, res) => {
-  // XLSX.(req.params.company_name, (err, company) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     console.log(newCompany);
-  //     res.json(company);
-  //   }
-  // });
-  // console.log(`${req.params.company_name}`);
-  const companyArray = XLSX.utils.sheet_to_json(
-    detailsSheet.Sheets[sheet_name_list[0]]
-  );
-  let companyName = companyArray.find(
-    (comp) => comp.company_name == req.params.company_name
-  );
-  res.json(companyName);
+  console.log(`${req.params.company_name}`);
+  const company= placementCompany.findOne({name:req.params.company_name}, (err, company) => {
+    if (err) {
+      console.log(err);
+    } else {
+      // console.log(newCompany);
+      res.json(company);
+    }
+  });
+
+
+
+  // through excel sheets
+  // const companyArray = XLSX.utils.sheet_to_json(
+  //   detailsSheet.Sheets[sheet_name_list[0]]
+  // );
+  // let companyName = companyArray.find(
+  //   (comp) => comp.company_name == req.params.company_name
+  // );
+  // res.json(companyName);
 });
 
 // to post new company by admin
 // upload.single("Placement"),
 router.post("/placement/add_company", async (req, res) => {
-  const { name, selected_students, description, year } = req.body;
+  const { name, selected_students, test_series, step3, technical_round, HR_round, projects, PORs, step1, step2, year, logo, eligible_branch, CGPA, takeaways } = req.body;
   const newCompany = new placementCompany({
     name: name,
     selected_students: selected_students,
-    description: description,
     year: year,
+    logo: logo,
+    eligible_branch: eligible_branch,
+    CGPA: CGPA,
+    takeaways: takeaways,
+    test_series: test_series,
+    selection_process: {
+      step1: step1,
+      step2: step2,
+      step3: step3
+    },
+    interview_round: {
+      technical_round: technical_round,
+      HR_round: HR_round
+    },
+    influence_of: {
+      projects: projects,
+      PORs: PORs
+    },
   });
   await newCompany.save();
   res.send(newCompany);

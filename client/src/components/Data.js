@@ -24,7 +24,10 @@ const Data = () => {
   }
   return (
     <>
-      <h1 className=" text-center mt-3"> Selection Process</h1>
+
+    <h2>company details by name...</h2>
+
+      {/* <h1 className=" text-center mt-3"> Selection Process</h1>
       <Container className="sm-6 md-6 lg-6 flex">
         <Accordion defaultActiveKey="1">
           {Object.keys(data).map((e, i) => {
@@ -36,7 +39,7 @@ const Data = () => {
             );
           })}
         </Accordion>
-      </Container>
+      </Container> */}
     </>
   );
 };
