@@ -1,0 +1,23 @@
+.comp_name{
+    text-align: center;
+    margin: 2rem;
+    text-transform: capitalize;
+    font-family: sans-serif;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo_discription{
+    display: flex;
+}
+
+
+@media screen and (max-width:600px) {
+    .logo_discription{
+        flex-direction: column-reverse;
+        text-align: center;
+        
+    }
+}

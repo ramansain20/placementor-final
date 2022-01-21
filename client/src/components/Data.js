@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import styles from "./Data.module.css";
+
+
 
 const Data = () => {
   const params = useParams();
@@ -27,11 +30,29 @@ const Data = () => {
 
   return (
     <>
-      <h1 className=" text-center mt-3"> Selection Process</h1>
+
+      <Container style={{width:"70%",margin:"auto"}}>
+        <h1 className={styles.comp_name} >{data.company_name}</h1>
+        <Row>
+
+          <div className={styles.logo_discription}>
+          <Col  >
+            <p>CGPA : {data.CGPA}</p>
+            <p>Selected Students : {data.selected_students}</p>
+            <p>Eligible Branch : {data.eligible_branch} </p>
+          </Col>
+          <Col className={styles.logo} >
+            <img style={{ "height": "5rem" }} src={data.logo} alt="logo" draggable={false} />
+          </Col>
+          </div>
+
+        </Row>
+      </Container>
+
       <Container className="sm-6 md-6 lg-6 flex">
         <>
-          <h1>{data.company_name}</h1>
-          <img src={data.logo} alt="logo" draggable={false} />
+          <h1 style={{ "fontFamily": "sans-serif", "fontSize": "2rem", "margin": "2rem" }} > Selection Process</h1>
+
           {Object.keys(data).map((e, i) => {
             if (e === "logo" || e === "_id" || e === "__v") {
               return <></>;
