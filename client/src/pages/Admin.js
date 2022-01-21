@@ -2,16 +2,16 @@ import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import Row from "react-bootstrap/Row";
-import Card from "react-bootstrap/Card";
+// import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import AddCompanyModal from "../components/AdminComponent/AddCompanyModal";
-import EditModal from "../components/AdminComponent/EditModal";
+// import EditModal from "../components/AdminComponent/EditModal";
 import styles from "./../components/Data.module.css";
 
 export default function Admin() {
   const [modalShow, setModalShow] = useState(false);
-  const [editModalShow, setEditModalShow] = useState(false);
+  // const [editModalShow, setEditModalShow] = useState(false);
   const [data, setData] = useState([]);
   const [type, setType] = useState("placement");
   const deleteHandle = async (e) => {
