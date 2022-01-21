@@ -53,14 +53,14 @@ function ContactForm() {
     <div className={styles.contact_section}>
       <div className={styles.card_section}>
         <div className={styles.first_card}>
-          <div className={styles.row_items}>
+          {/* <div className={styles.row_items}>
             <div className={styles.icons}>
               <FontAwesomeIcon icon={faPhone} size={"lg"} />
             </div>
             <div>
               <p>9871276822</p>
             </div>
-          </div>
+          </div> */}
           <div className={styles.row_items}>
             <div className={styles.icons}>
               <FontAwesomeIcon icon={faEnvelope} size={"lg"} />

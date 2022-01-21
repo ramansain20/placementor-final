@@ -10,11 +10,11 @@ const HeadingDiv = styled.div`
   padding: 1rem;
   color: #fff;
   display: flex;
-  justify-content: flex-end;
+  align-items:flex-start ;
   .text_area {
     display: flex;
     flex-direction: column;
-    text-align: right;
+    text-align: center;
     width: 80%;
   }
   .suitboi_svg {
@@ -38,9 +38,8 @@ export default function HeadingSection() {
         <div className="text_area">
           <h1>Insights</h1>
           <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam
+              The institute has had active relations with many corporations in different sectors, including core, analytics,finance
+              ,consulting,IT,PSUs and many more. Top recruiters from around the world flock to the campus to pick up talents.
           </p>
         </div>
       </HeadingDiv>

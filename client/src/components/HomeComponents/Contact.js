@@ -50,8 +50,8 @@ export default function Contact() {
       <Container>
         <h1 className="heading">Contact us</h1>
         <p className="paragraph">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          Have any queries? Feel free to reach out to the Mailer Daemon team.
+          Fill out the details below.
         </p>
       </Container>
 
