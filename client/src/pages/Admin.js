@@ -7,6 +7,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import AddCompanyModal from "../components/AdminComponent/AddCompanyModal";
 import EditModal from "../components/AdminComponent/EditModal";
+import styles from "./../components/Data.module.css";
+
 export default function Admin() {
   const [modalShow, setModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
@@ -31,7 +33,7 @@ export default function Admin() {
     axios
       .get(`http://localhost:3000/${type}/all_companies`)
       .then((response) => {
-        setData([response.data]);
+        setData(response.data);
       });
   }, [type]);
 
@@ -45,8 +47,8 @@ export default function Admin() {
         aria-label="Default select example"
       >
         <select value={type} onChange={() => typeHandle}>
-        <option value="placement">Placement</option>
-        <option value="internship">Internship</option>
+          <option value="placement">Placement</option>
+          <option value="internship">Internship</option>
         </select>
       </Form.Select>
 
@@ -58,34 +60,53 @@ export default function Admin() {
         Add New
       </Button>
       <Row>
-        {data.map((company) => (
-          <Card className="p-2 mt-3">
-            <Card.Body>
-              <Card.Title>{company.name}</Card.Title>
-              <Card.Text>{company.selected_students}</Card.Text>
-              <Card.Text>{company.description}</Card.Text>
-              <Button
-                variant="outline-danger mx-2 "
-                id={company._id}
-                onClick={() => deleteHandle}
-              >
-                Delete
-              </Button>
-              <EditModal
-                data={company}
-                show={editModalShow}
-                onHide={() => setEditModalShow(false)}
-              />
-              <Button
-                variant="outline-warning mx-2 "
-                id={company._id}
-                onClick={() => setEditModalShow(true)}
-              >
-                Edit
-              </Button>
-            </Card.Body>
-          </Card>
-        ))}
+        <>
+          {data.map((comp) => {
+            return (
+              <>
+                <h1 className={styles.comp_name}>{comp.company_name}</h1>
+                <img src={comp.logo} alt="logo" draggable={false} />
+                {Object.keys(comp).map((e, i) => {
+                  if (
+                    e === "logo" ||
+                    e === "_id" ||
+                    e === "__v" ||
+                    e === "company_name"
+                  ) {
+                    return <></>;
+                  }
+                  return (
+                    <div>
+                      <h3
+                        style={{
+                          textTransform: "capitalize",
+                          textAlign: "center",
+                        }}
+                      >
+                        {e}
+                      </h3>
+                      {typeof comp[e] === "object" ? (
+                        Object.keys(comp[e]).map((x, idx) => {
+                          return <div>{comp[e][x]}</div>;
+                        })
+                      ) : (
+                        <div>{comp[e]}</div>
+                      )}
+                    </div>
+                  );
+                })}
+
+                <Button
+                  variant="outline-danger mx-2 "
+                  id={comp._id}
+                  onClick={() => deleteHandle}
+                >
+                  Delete
+                </Button>
+              </>
+            );
+          })}
+        </>
       </Row>
     </Container>
   );
