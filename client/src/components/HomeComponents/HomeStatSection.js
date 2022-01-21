@@ -17,6 +17,13 @@ const Container = styled.div`
     font-weight: bold;
     max-width: 50%;
     margin: auto;
+
+
+  }
+  @media screen and (max-width: 600px) {
+    .paragraph{
+      max-width:80%;
+    }
   }
 `;
 

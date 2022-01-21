@@ -13,14 +13,15 @@ const Card = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 90%;
-  height: 80%;
+  height: 90%;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 
   @media screen and (max-width: 600) {
-    font-size: 1.5rem;
+    font-size: 0.5rem;
+    width:99%
   }
 `;
 
@@ -38,11 +39,11 @@ export default function Home() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Home | Placementor</title>
-        {/* <link rel="icon" type="image/png" sizes="16x16" href="/"> */}
+        {/* <link rel="icon" type="image/png" sizes="16x16" href="/" /> */}
         <link
           rel="icon"
           type="image/png"
-          href="../assets/favicon_io/favicon-16x16.png"
+          href="https://github.com/MejarKumar/All-Company-Logo/blob/main/favicon-32x32.png?raw=true"
         />
         <meta name="theme-color" content="#064420" />
       </Helmet>
@@ -52,16 +53,16 @@ export default function Home() {
       <HomeStat>
         <Card>
           <Stat>
-            <p>Lorem ipsum</p>
-            <h2>1000+</h2>
+            <p>Total Offers</p>
+            <h3>920+</h3>
           </Stat>
           <Stat>
-            <p>Lorem ipsum</p>
-            <h2>25+</h2>
+            <p>Companies Participated</p>
+            <h3>200+</h3>
           </Stat>
           <Stat>
-            <p>Lorem ipsum</p>
-            <h2>300+</h2>
+            <p>Internnational Offers</p>
+            <h3>15+</h3>
           </Stat>
         </Card>
       </HomeStat>

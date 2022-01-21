@@ -73,6 +73,7 @@ app.post("/send_mail", async (req, res) => {
     // html: "<b>Hello world</b>", // html body
   });
   console.log("Message sent: %s", info.messageId);
+  res.status(200).send("Send successfully..")
 });
 
 app.use(internship);

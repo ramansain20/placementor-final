@@ -50,7 +50,7 @@ router.get("/placement/:company_name", (req, res) => {
 // to post new company by admin
 // upload.single("Placement"),
 router.post("/placement/add_company", async (req, res) => {
-  const { comapany_name, selected_students, test_series, step3, technical_round, HR_round, projects, PORs, step1, step2, year, logo, eligible_branch, CGPA, takeaways } = req.body;
+  const { company_name, selected_students, test_series, step3, technical_round, HR_round, projects, PORs, step1, step2, year, logo, eligible_branch, CGPA, takeaways } = req.body;
   const newCompany = new placementCompany({
    company_name: company_name,
     selected_students: selected_students,

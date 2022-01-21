@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Admin = require("../model/admin");
 const jwt = require("jsonwebtoken");
+const { requireAuth } = require("../middleware/auth");
 
 //to handle error
 const handleErrors = (err)=>{
@@ -80,6 +81,14 @@ router.post("/admin_login",async (req,res)=>{
     }
 })
 
+
+
+router.get("/verifyToken",requireAuth, (req,res)=>{
+    res.json({
+        status:200,
+        redirected:true,
+    })
+})
 
 module.exports = router;
 

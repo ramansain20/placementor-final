@@ -24,6 +24,7 @@ const Paragraph = styled.p`
   margin: auto;
   @media screen and (max-width: 600px) {
     font-size: 1.2rem;
+    max-width:80%;
   }
 `;
 const Div = styled.div`

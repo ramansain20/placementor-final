@@ -13,6 +13,11 @@ const Container = styled.div`
     margin: auto;
     margin-top: 20px;
   }
+  @media screen and (max-width: 600px) {
+    .paragraph{
+      max-width:80%;
+    }
+  }
 `;
 
 const Cards = styled.div`

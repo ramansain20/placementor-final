@@ -56,8 +56,15 @@ export default function Stats() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Statistics | Placementor</title>
+        <link
+          rel="icon"
+          type="image/png"
+          href="https://github.com/MejarKumar/All-Company-Logo/blob/main/favicon-32x32.png?raw=true"
+        />
+        <meta name="theme-color" content="#064420" />
       </Helmet>
-      <Bar options={options} data={data} />;
+      {/* <Bar options={options} data={data} />; */}
+      <div style={{textAlign: "center", margin:"2rem",fontWeight:"bold",fontSize:"3rem",fontFamily:"sans-serif",color:"rgba(238, 109, 152, 1) "}}>Coming Soon...🤩</div>
     </div>
   );
 }

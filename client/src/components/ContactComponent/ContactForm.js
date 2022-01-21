@@ -77,8 +77,8 @@ function ContactForm() {
             </div>
             <div>
               <p>
-                lorem Loremm abore et dolore magna aliquyam erat, sed diam
-                voluptua. At vero
+                IIT (ISM) Dhanbad,
+              Police Line, Sardar Patel Nagar, Hirapur, Dhanbad, Jharkhand 826004
               </p>
             </div>
           </div>

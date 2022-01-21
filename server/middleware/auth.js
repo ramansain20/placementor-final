@@ -8,7 +8,8 @@ const requireAuth = (req,res,next)=>{
     if(token){
         jwt.verify(token,'my secret',(err,decodedToken)=>{
             if(err){
-                console.log(err.message);
+                console.log(err.message,"heelo");
+                res.status(404).send("not authenticated");
             }else{
                 console.log(decodedToken);
                 next();
@@ -16,6 +17,7 @@ const requireAuth = (req,res,next)=>{
         })
     }else{
         console.log("You are not admin");
+        res.json("You are not autherized");
     }
 }
 

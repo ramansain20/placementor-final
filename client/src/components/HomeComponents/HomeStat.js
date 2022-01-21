@@ -18,7 +18,8 @@ const HomeStat = styled.div`
   z-index: 1;
 
   @media screen and (max-width: 600px) {
-    height: 5rem;
+    
+    width:95%;
   }
   @media screen and (min-width: 1000px) {
     transform: translateY(-30px);

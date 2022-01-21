@@ -57,12 +57,12 @@ export default function CompanyFetch(props) {
                 }}
                 key={idx}
               >
-                <h3 style={{ textTransform: "uppercase", textAlign: "center" }}>
+                <h3 style={{ textTransform: "uppercase", textAlign: "center","fontWeight":"800" }}>
                   {comp.company_name}
                 </h3>
-                <p>{comp.selected_students}</p>
+                {/* <p>{comp.selected_students}</p> */}
                 {/* <p>{comp.eligible_branch}</p> */}
-                <p>{comp.CGPA}</p>
+                {/* <p>{comp.CGPA}</p> */}
                 {comp.logo && (
                   <img style={{ height: "20%" }} src={`${comp.logo}`} alt="" />
                 )}

@@ -12,11 +12,14 @@ margin:auto;
 margin-top:50px;
 margin-bottom:0px;
   font-size:70px;
-  @media screen and (max-width:620px){
-    font-size:30px;
+  @media screen and (max-width:730px){
+    font-size:3rem;
+  }
+  @media screen and (max-width:490px){
+    font-size:2rem;
   }
 `;
-const Strip=styled.div`
+const Strip = styled.div`
 background: linear-gradient(
   270deg,
   rgba(238, 109, 152, 1) 15%,
@@ -28,11 +31,10 @@ width: 100%;
 height:39vh;
 padding: 1.3rem;
 text-align:center;
-
 @media screen and (max-width: 600px) {
   padding: 0.3rem;
   }`;
-  const AboutSection = styled.div`
+const AboutSection = styled.div`
   background: linear-gradient(
     270deg,
     rgba(238, 109, 152, 1) 15%,
@@ -58,6 +60,10 @@ const Paragraph = styled.p`
   max-width: 45%;
   font-weight: 500;
   
+  @media screen and (max-width: 750px) {
+    max-width:80%;
+    }
+  
 `;
 
 const Image = styled.img`
@@ -74,14 +80,28 @@ const Image = styled.img`
     
   }
 `;
-const  Data = () => {
+const Data = () => {
 
   const params = useParams();
   console.log(params);
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    selection_process: {
+      step1: '1',
+      step2: '1'
+    },
+    influence_of: {
+      projects: '1',
+      PORs: '2',
+    },
+    logo: "",
+    eligible_branch: 'CS',
+    selected_students: '4',
+
+  });
 
   useEffect(() => {
+
     axios
       .get(`http://localhost:3000/${params.type}/${params.id}`)
       .then((response) => {
@@ -91,89 +111,126 @@ const  Data = () => {
       .catch((e) => {
         console.log(e);
       });
-  }, [params]);
+
+  }, [setData]);
 
   if (params.type !== "placement" && params.type !== "internship") {
-    return <>Not found</>;
+    return <div style={{margin:"2rem auto" ,textAlign:"center",fontSize:"2.5rem",color:"rgba(138, 94, 191, 1) "}}>Not Found 😔</div>;
   }
-  return (  
-      <>
-       <AboutSection>
-        <Heading>Placement Recruiters</Heading>
-        
-        <Paragraph>
-        The insitute has had active relations with many corporations in different sectors, including core ,analytics ,finance,consulting ,IT,
-        PSUs and many more. Top recruiters from around the world flock to the campus to pick up talents.
-        </Paragraph>
-        {/* <Image src={AboutSvg} alt="about-svg"></Image> */}
-      </AboutSection>
- 
-      <div className={styles.main_content}> 
-        <h1 className={styles.company_name}>GOOGLE</h1>
-         <img src={data.logo} className={styles.logo_small}/>
-         
-         <Strip className={styles.data_container}>
-         
-         <div className="frosty">
-                <ul>
-                  {/* <li><b>Profile  </b> Software Engineer</li> */}
-                  <li><b>Branches Eligible : </b> {data.eligible_branch}</li>
-                  <li><b>CGPA Criteria:  </b> {data.CGPA} CGPA</li>
-                </ul>
-         </div>
-        </Strip>
-        
-      </div>
-        <h1 className={styles.Headings}> Selection Process</h1>
-    <Accordion defaultActiveKey="0">
-<Accordion.Item eventKey="0">
-  <Accordion.Header>Round 1</Accordion.Header>
-  <Accordion.Body>
-   {data.selection_process.step1}
-  </Accordion.Body>
-</Accordion.Item>
 
-  <Accordion.Item eventKey="1">
-  <Accordion.Header>Interview Round</Accordion.Header>
-  <Accordion.Body>
-  {data.selection_process.step2}
-  </Accordion.Body>
-</Accordion.Item>
-</Accordion>
-<h1 className={styles.data_container}> Influence Of</h1>
-<Accordion defaultActiveKey="0">
-<Accordion.Item eventKey="0">
-  <Accordion.Header>Projects/Previous Internships</Accordion.Header>
-  <Accordion.Body>
-    {data.influence_of.projects}
-  </Accordion.Body>
-</Accordion.Item>
-<Accordion.Item eventKey="1">
-  <Accordion.Header>PORs</Accordion.Header>
-  <Accordion.Body>
-  {data.influence_of.PORs};
-  </Accordion.Body>
-</Accordion.Item>
-</Accordion>
-<h1 className={styles.data_container}>Test Preparation</h1>
-<Accordion defaultActiveKey="0">
-<Accordion.Item eventKey="0">
-  <Accordion.Header>Test Series</Accordion.Header>
-  <Accordion.Body>
-    {data.test_series}
-  </Accordion.Body>
-</Accordion.Item>
-</Accordion>
-<h1 className={styles.data_container}> Takeaways</h1>
-<Accordion defaultActiveKey="0">
-<Accordion.Item eventKey="0">
-  <Accordion.Header>Key Takeaways</Accordion.Header>
-  <Accordion.Body>
-  {data.takeaways}
-  </Accordion.Body>
-</Accordion.Item>
-</Accordion>
-      </>
+  if(!data)
+  {
+    return<div style={{margin:"2rem auto" ,textAlign:"center",fontSize:"2.5rem",color:"rgba(138, 94, 191, 1) "}}>Not Found 😔</div>
+  }
+
+  return (
+
+    <>
+
+
+      <div className={styles.main_content}>
+        <h3 className={styles.company_name}>{data.company_name}</h3>
+        {console.log(data)}
+        <img src={data.logo} className={styles.logo_small} />
+
+        <Strip className={styles.data_container}>
+
+          <div className={styles.frosty}>
+            <ul style={{ listStyleType: "none" }}>
+              <li><b>Profile  </b> Software Engineer</li>
+              <li><b>Branches Eligible : </b> {data.eligible_branch}</li>
+              <li><b>CGPA Criteria:  </b> {data.CGPA} CGPA</li>
+            </ul>
+          </div>
+        </Strip>
+
+      </div>
+    <Container style={{width:"auto",display:"flex",flexDirection:"column",margin:"auto"}}>
+      <Row className={styles.temp}>
+        <div className="col-lg-5" style={{
+          border: "solid 2px black",
+          padding: "10px",
+          borderRadius: '7px',
+          margin: '12px'
+        }}>
+          <h1 className={styles.data_container}> Selection Process</h1>
+          <Accordion defaultActiveKey="0">
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>Round 1</Accordion.Header>
+              <Accordion.Body>
+                {data.selection_process.step1}
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="2">
+              <Accordion.Header>Interview Round</Accordion.Header>
+              <Accordion.Body>
+                {data.selection_process.step2}
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+
+        </div>
+        <div className="col-lg-5" style={{
+          border: "solid 2px black",
+          padding: "10px",
+          borderRadius: '7px',
+          margin: '12px'
+        }}>
+          <h1 className={styles.data_container}> Influence Of</h1>
+          <Accordion defaultActiveKey="0">
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>Projects/Previous Internships</Accordion.Header>
+              <Accordion.Body>
+                {data.influence_of.projects}
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="2">
+              <Accordion.Header>PORs</Accordion.Header>
+              <Accordion.Body>
+                {data.influence_of.PORs};
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        </div>
+
+      </Row>
+
+      <Row className={styles.temp}>
+        <div className="col-lg-5" style={{
+          border: "solid 2px black",
+          padding: "10px",
+          borderRadius: '7px',
+          margin: '12px'
+        }}>
+          <h1 className={styles.data_container}>Test Preparation</h1>
+          <Accordion defaultActiveKey="0">
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>Test Series</Accordion.Header>
+              <Accordion.Body>
+                {data.test_series}
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        </div>
+        <div className="col-lg-5" style={{
+          border: "solid 2px black",
+          padding: "10px",
+          borderRadius: '7px',
+          margin: '12px'
+        }}>
+          <h1 className={styles.data_container}> Takeaways</h1>
+          <Accordion defaultActiveKey="0">
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>Key Takeaways</Accordion.Header>
+              <Accordion.Body>
+                {data.takeaways}
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        </div>
+      </Row>
+      </Container>
+    </>
   );
 
 }

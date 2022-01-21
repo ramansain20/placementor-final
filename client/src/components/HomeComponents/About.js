@@ -30,6 +30,9 @@ const Paragraph = styled.p`
   margin: 15px;
   max-width: 50%;
   font-weight: 500;
+  @media screen and (max-width: 600px) {
+    max-width:75%;
+  }
 `;
 
 const Image = styled.img`

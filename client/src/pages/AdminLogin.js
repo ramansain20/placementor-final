@@ -118,7 +118,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Helmet } from "react-helmet";
 const Form = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -159,10 +159,10 @@ const Form = () => {
         },
       });
       result = await result.json();
-      console.log(result.token);
+      // console.log(result.token);
       if(result.token){
         setSubmitted(true);
-        localStorage.setItem("token", result.token);
+        localStorage.setItem("token",  result.token)
         navigate("/admin");
         setError(false);
       }else{
@@ -180,14 +180,30 @@ const Form = () => {
   // Showing success message
   const successMessage = () => {
     return (
+
+<>
+<Helmet>
+        <meta charSet="utf-8" />
+        <title>Admin Login | Placementor</title>
+        {/* <link rel="icon" type="image/png" sizes="16x16" href="/" /> */}
+        <link
+          rel="icon"
+          type="image/png"
+          href="https://github.com/MejarKumar/All-Company-Logo/blob/main/favicon-32x32.png?raw=true"
+        />
+        <meta name="theme-color" content="#064420" />
+      </Helmet>
+
+
       <div
         className="success"
         style={{
           display: submitted ? "" : "none",
         }}
       >
-        <h1>User {email} successfully registered!!</h1>
+        {/* <h1>User {email} successfully registered!!</h1> */}
       </div>
+      </>
     );
   };
 

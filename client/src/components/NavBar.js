@@ -43,7 +43,7 @@ export default function NaveBar() {
         <Bars onClick={hamburgerHandler} />
         <NavMenu  data-aos="fade-down-up">
           <NavLink to="/insight/placement">Insights</NavLink>
-          <NavLink to="/past-recuiters">Past Recutiers</NavLink>
+          {/* <NavLink to="/past-recuiters">Past Recutiers</NavLink> */}
           <NavLink to="/stats">Statistics</NavLink>
         </NavMenu>
       </Nav>
@@ -54,9 +54,9 @@ export default function NaveBar() {
         <NavLink to="/insight" onClick={hamburgerHandler}>
           Insights
         </NavLink>
-        <NavLink to="/past-recuiters" onClick={hamburgerHandler}>
+        {/* <NavLink to="/past-recuiters" onClick={hamburgerHandler}>
           Past Recutiers
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/stats" onClick={hamburgerHandler}>
           Statistics
         </NavLink>

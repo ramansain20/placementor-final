@@ -8,12 +8,16 @@ import Form from "react-bootstrap/Form";
 import AddCompanyModal from "../components/AdminComponent/AddCompanyModal";
 import EditModal from "../components/AdminComponent/EditModal";
 import styles from "./../components/Data.module.css";
-
-export default function Admin() {
+import { useNavigate } from "react-router-dom";
+import { Col } from "react-bootstrap";
+// import { Redirect } from "react-router-dom";
+export default function Admin(props) {
+  const navigate = useNavigate();
   const [modalShow, setModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
   const [data, setData] = useState([]);
   const [type, setType] = useState("placement");
+  const [error, setError] = useState(true);
   const deleteHandle = async (e) => {
     await fetch(`http://localhost:3000/${type}/delete/${e.target.id}`, {
       method: "DELETE",
@@ -30,6 +34,23 @@ export default function Admin() {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    //  console.log(token);
+    fetch("http://localhost:3000/verifyToken", {
+      method: "GET",
+      headers: {
+        "x-auth-token": token,
+      },
+    }).then((response) => {
+      console.log(response);
+      if (response.status != 200) {
+        navigate("/admin_login");
+      }
+      // console.log(response);
+    });
+  });
+
+  useEffect(() => {
     axios
       .get(`http://localhost:3000/${type}/all_companies`)
       .then((response) => {
@@ -43,13 +64,11 @@ export default function Admin() {
         className="m-3"
         style={{ width: "50%" }}
         value={type}
-        onChange={() => typeHandle}
+        onChange={typeHandle}
         aria-label="Default select example"
       >
-        <select value={type} onChange={() => typeHandle}>
-          <option value="placement">Placement</option>
-          <option value="internship">Internship</option>
-        </select>
+        <option value="placement">Placement</option>
+        <option value="internship">Internship</option>
       </Form.Select>
 
       <AddCompanyModal show={modalShow} onHide={() => setModalShow(false)} />
@@ -64,45 +83,69 @@ export default function Admin() {
           {data.map((comp) => {
             return (
               <>
-                <h1 className={styles.comp_name}>{comp.company_name}</h1>
-                <img src={comp.logo} alt="logo" draggable={false} />
-                {Object.keys(comp).map((e, i) => {
-                  if (
-                    e === "logo" ||
-                    e === "_id" ||
-                    e === "__v" ||
-                    e === "company_name"
-                  ) {
-                    return <></>;
-                  }
-                  return (
-                    <div>
-                      <h3
-                        style={{
-                          textTransform: "capitalize",
-                          textAlign: "center",
-                        }}
-                      >
-                        {e}
-                      </h3>
-                      {typeof comp[e] === "object" ? (
-                        Object.keys(comp[e]).map((x, idx) => {
-                          return <div>{comp[e][x]}</div>;
-                        })
-                      ) : (
-                        <div>{comp[e]}</div>
-                      )}
-                    </div>
-                  );
-                })}
+                <Container>
+                  <Row>
 
-                <Button
-                  variant="outline-danger mx-2 "
-                  id={comp._id}
-                  onClick={() => deleteHandle}
-                >
-                  Delete
-                </Button>
+
+                    <Col>
+
+                      <h1 className={styles.comp_name}>{comp.company_name}</h1>
+
+                    </Col>
+                    <Col>
+
+                      <img
+                        style={{ width: "20%" }}
+                        src={comp.logo}
+                        alt="logo"
+                        draggable={false}
+                      />
+                    </Col>
+                    {Object.keys(comp).map((e, i) => {
+                      if (
+                        e === "logo" ||
+                        e === "_id" ||
+                        e === "__v" ||
+                        e === "company_name"
+                      ) {
+                        return <></>;
+                      }
+
+
+
+                      // return (
+                      // <div>
+                      //   <h3
+                      //     style={{
+                      //       textTransform: "capitalize",
+                      //       textAlign: "center",
+                      //     }}
+                      //   >
+                      //     {e}
+                      //   </h3>
+                      //   {typeof comp[e] === "object" ? (
+                      //     Object.keys(comp[e]).map((x, idx) => {
+                      //       return <div>{comp[e][x]}</div>;
+                      //     })
+                      //   ) : (
+                      //     <div>{comp[e]}</div>
+                      //   )}
+                      // </div>
+                      //   <></>
+                      // );
+                    })}
+                    <Col>
+
+                      <Button
+                        variant="outline-danger mx-2 "
+                        id={comp._id}
+                        onClick={() => deleteHandle}
+                      >
+                        Delete
+                      </Button>
+                    </Col>
+                  </Row>
+                </Container>
               </>
             );
           })}

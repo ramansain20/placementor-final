@@ -74,6 +74,12 @@ export default function InsightInternship() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Internship Insight </title>
+        <link
+          rel="icon"
+          type="image/png"
+          href="https://github.com/MejarKumar/All-Company-Logo/blob/main/favicon-32x32.png?raw=true"
+        />
+        <meta name="theme-color" content="#064420" />
       </Helmet>
 
       <HeadingSection />
