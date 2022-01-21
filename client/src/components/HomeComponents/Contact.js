@@ -50,8 +50,7 @@ export default function Contact() {
       <Container>
         <h1 className="heading">Contact us</h1>
         <p className="paragraph">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+         Have any query? Feel free to reach out to us. Fill the form below and we will try our best to resolve your queries
         </p>
       </Container>
 

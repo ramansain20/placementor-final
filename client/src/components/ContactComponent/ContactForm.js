@@ -54,12 +54,12 @@ function ContactForm() {
       <div className={styles.card_section}>
         <div className={styles.first_card}>
           <div className={styles.row_items}>
-            <div className={styles.icons}>
+            {/* <div className={styles.icons}>
               <FontAwesomeIcon icon={faPhone} size={"lg"} />
             </div>
             <div>
               <p>9871276822</p>
-            </div>
+            </div> */}
           </div>
           <div className={styles.row_items}>
             <div className={styles.icons}>
@@ -77,8 +77,7 @@ function ContactForm() {
             </div>
             <div>
               <p>
-                lorem Loremm abore et dolore magna aliquyam erat, sed diam
-                voluptua. At vero
+                Mailer Daemon
               </p>
             </div>
           </div>
