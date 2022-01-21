@@ -7,6 +7,10 @@ export default function AddCompanyModal(props) {
   const [selected_students, setSelected_students] = useState("");
   const [description, setDescription] = useState("");
   const [year, setYear] = useState("");
+  const [eligible_branch, setEligible_branch] = useState("");
+  const [cgpa, setCgpa] = useState("");
+  const [takeAways, setTakeAways] = useState("");
+
   const [error, setError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [type, setType] = useState("");
@@ -15,11 +19,17 @@ export default function AddCompanyModal(props) {
   const handleType = (e) => {
     setType(e.target.value);
   };
+  const handleCgpa = (e) => {
+    setCgpa(e.target.value);
+  };
   // Handling the name change
   const handleName = (e) => {
     setName(e.target.value);
   };
-
+  // handling eligible branch
+  const handleEligible_branch = (e) => {
+    setEligible_branch(e.target.value);
+  };
   // Handling the selected_student change
   const handleSelected_students = (e) => {
     setSelected_students(e.target.value);
@@ -32,7 +42,9 @@ export default function AddCompanyModal(props) {
   const handleYear = (e) => {
     setYear(e.target.value);
   };
-
+  const handleTakeAways = (e) => {
+    setTakeAways(e.target.value);
+  };
   // Handling the form submission
   const handleSubmit = async function (e) {
     e.preventDefault();
@@ -134,6 +146,37 @@ export default function AddCompanyModal(props) {
               />
 
               {/* ------------------Selected Students--------------------  */}
+              {/* ------------------Eligible Branches--------------------  */}
+
+              <Form.Label>Eligible Branch</Form.Label>
+              <Form.Control
+                type="text"
+                rows={1}
+                onChange={handleEligible_branch}
+                value={eligible_branch}
+              />
+              {/* ------------------Eligible Branches--------------------  */}
+              {/* ------------------Cgpa--------------------  */}
+
+              <Form.Label>Cgpa</Form.Label>
+              <Form.Control
+                min="1"
+                type="text"
+                rows={1}
+                onChange={handleCgpa}
+                value={cgpa}
+              />
+              {/* ------------------Cgpa--------------------  */}
+              {/* ------------------Takeaways--------------------  */}
+              <Form.Label>Take Aways</Form.Label>
+              <Form.Control
+                min="1"
+                type="text"
+                rows={1}
+                onChange={handleTakeAways}
+                value={takeAways}
+              />
+              {/* ------------------Takeaways--------------------  */}
 
               {/* ------------------Description--------------------  */}
               <Form.Label>Description</Form.Label>

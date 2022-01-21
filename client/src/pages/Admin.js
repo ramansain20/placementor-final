@@ -43,13 +43,11 @@ export default function Admin() {
         className="m-3"
         style={{ width: "50%" }}
         value={type}
-        onChange={() => typeHandle}
+        onChange={typeHandle}
         aria-label="Default select example"
       >
-        <select value={type} onChange={() => typeHandle}>
-          <option value="placement">Placement</option>
-          <option value="internship">Internship</option>
-        </select>
+        <option value="placement">Placement</option>
+        <option value="internship">Internship</option>
       </Form.Select>
 
       <AddCompanyModal show={modalShow} onHide={() => setModalShow(false)} />
@@ -60,12 +58,25 @@ export default function Admin() {
         Add New
       </Button>
       <Row>
-        <>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+          }}
+        >
           {data.map((comp) => {
             return (
-              <>
+              <div
+                style={{ width: "50%", margin: "auto", marginBottom: "2rem" }}
+              >
                 <h1 className={styles.comp_name}>{comp.company_name}</h1>
-                <img src={comp.logo} alt="logo" draggable={false} />
+                <img
+                  style={{ height: "2rem" }}
+                  src={comp.logo}
+                  alt="logo"
+                  draggable={false}
+                />
                 {Object.keys(comp).map((e, i) => {
                   if (
                     e === "logo" ||
@@ -103,10 +114,10 @@ export default function Admin() {
                 >
                   Delete
                 </Button>
-              </>
+              </div>
             );
           })}
-        </>
+        </div>
       </Row>
     </Container>
   );
